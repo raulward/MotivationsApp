@@ -1,12 +1,13 @@
 package com.example.motivationsapp.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.example.motivationsapp.R
-import com.example.motivationsapp.SecurityPreferences
+import com.example.motivationsapp.infra.SecurityPreferences
 import com.example.motivationsapp.data.Mock
 import com.example.motivationsapp.databinding.ActivityMainBinding
 import com.example.motivationsapp.infra.MotivationConstants
@@ -35,10 +36,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         // Events
         binding.buttonNewPhrase.setOnClickListener(this)
-
         binding.imageInfinite.setOnClickListener(this)
         binding.imageSmile.setOnClickListener(this)
         binding.imageSun.setOnClickListener(this)
+        binding.textUser.setOnClickListener(this)
 
 
 
@@ -50,12 +51,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             binding.textPhrase.text = Mock.handlePhrase(categoryId)
         } else if (v.id in listOf(R.id.image_infinite, R.id.image_smile, R.id.image_sun)) {
             handleFilter(v.id)
+        } else if (v.id == R.id.text_user) {
+            handleUserNameClick()
         }
     }
 
     private fun handleUserName() {
         val userName = SecurityPreferences(this).getString(MotivationConstants.KEYS.USER_NAME)
         binding.textUser.text = "Hello, $userName!"
+    }
+
+    private fun handleUserNameClick() {
+        SecurityPreferences(this).deleteString(MotivationConstants.KEYS.USER_NAME)
+        startActivity(Intent(this, UserActivity::class.java))
     }
 
     private fun handleFilter(id: Int) {

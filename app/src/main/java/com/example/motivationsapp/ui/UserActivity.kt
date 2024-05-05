@@ -23,7 +23,10 @@ class UserActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.buttonSave.setOnClickListener(this)
 
+        // Verifica se ja existe um usuário
         verifyUserName()
+
+
 
     }
 

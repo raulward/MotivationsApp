@@ -16,4 +16,8 @@ class SecurityPreferences(context: Context) {
        return security.getString(key, "") ?: ""
     }
 
+    fun deleteString(key: String) {
+        security.edit().putString(key, "").apply()
+    }
+
 }
