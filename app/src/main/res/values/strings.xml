@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">MotivationsApp</string>
+    <string name="hello_user">Hello, Kotlin!</string>
+    <string name="motivacional_phrases">Motivacional Phrases</string>
+    <string name="button_new_phrase">New Phrase</string>
+    <string name="lets_get_started">Lets get started?</string>
+    <string name="edit_hint">Whats your name?</string>
+    <string name="button_save">SAVE</string>
+
+
+    <string name="validation_mandatory_name">Insert a name</string>
+
+</resources>
