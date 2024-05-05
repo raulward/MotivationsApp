@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MotivationsApp</string>
+    <string name="hello_user">Bonjour</string>
+    <string name="motivacional_phrases">Motivacional Phrases</string>
+    <string name="button_new_phrase">Nouvelle phrase</string>
+    <string name="lets_get_started">Commencer</string>
+    <string name="edit_hint">Quel est votre nom?</string>
+    <string name="button_save">SAUVER</string>
+
+
+    <string name="validation_mandatory_name">Entrez votre nom.</string>
+</resources>

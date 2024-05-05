@@ -11,11 +11,13 @@ import com.example.motivationsapp.infra.SecurityPreferences
 import com.example.motivationsapp.data.Mock
 import com.example.motivationsapp.databinding.ActivityMainBinding
 import com.example.motivationsapp.infra.MotivationConstants
+import java.util.Locale
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private var categoryId = MotivationConstants.FILTER.INFINITE
+    private var lang = Locale.getDefault().language
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         handleFilter(R.id.image_infinite)
 
         // Define uma frase de inicio
-        binding.textPhrase.text = Mock.handlePhrase(categoryId)
+        binding.textPhrase.text = Mock.handlePhrase(categoryId, lang)
 
         // Events
         binding.buttonNewPhrase.setOnClickListener(this)
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         if (v.id == R.id.button_new_phrase) {
-            binding.textPhrase.text = Mock.handlePhrase(categoryId)
+            binding.textPhrase.text = Mock.handlePhrase(categoryId, lang)
         } else if (v.id in listOf(R.id.image_infinite, R.id.image_smile, R.id.image_sun)) {
             handleFilter(v.id)
         } else if (v.id == R.id.text_user) {
@@ -58,7 +60,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun handleUserName() {
         val userName = SecurityPreferences(this).getString(MotivationConstants.KEYS.USER_NAME)
-        binding.textUser.text = "Olá, $userName!"
+        println(R.string.hello_user.toString())
+        binding.textUser.text = "$userName"
     }
 
     private fun handleUserNameClick() {
