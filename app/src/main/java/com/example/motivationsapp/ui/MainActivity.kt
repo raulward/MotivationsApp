@@ -60,8 +60,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun handleUserName() {
         val userName = SecurityPreferences(this).getString(MotivationConstants.KEYS.USER_NAME)
-        println(R.string.hello_user.toString())
-        binding.textUser.text = "$userName"
+        binding.textUser.text = "${R.string.hello_user}, $userName!"
     }
 
     private fun handleUserNameClick() {
